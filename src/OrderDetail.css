@@ -1,0 +1,34 @@
+.customer {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.billToAddress {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.shipToAddress {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.lineItems {
+  margin-top: 15px;
+}
+
+.lineItems>thead td {
+  font-weight: bold;
+}
+
+.orderTotals {
+  margin-top: 15px;
+}
+
+.orderTotalLabel {
+  font-weight: bold;
+}
+
+.currency {
+  text-align: right;
+}
