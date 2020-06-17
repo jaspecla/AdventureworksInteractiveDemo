@@ -48,6 +48,12 @@ function Chat() {
     setCurrentMessage(event.target.value);
   }
 
+  function handleKeyEvent(event) {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+  }
+
   async function sendMessage() {
     try {
       const response = await axios.post(`${signalRUrl}/messages`, {
@@ -69,9 +75,9 @@ function Chat() {
       </div>
       <div className="messageEntry">
         <h2>Enter a message:</h2>
-        <input type="text" value={currentMessage} onChange={updateCurrentMessage} />
+        <input type="text" value={currentMessage} onChange={updateCurrentMessage} onKeyUp={handleKeyEvent}/>
         <div className="sendButton">
-          <button disabled={!isReady} onClick={() => { sendMessage() }}>Send Message</button>
+          <button disabled={!isReady} onClick={sendMessage}>Send Message</button>
         </div>
       </div>
       <div className="receivedMessages">
