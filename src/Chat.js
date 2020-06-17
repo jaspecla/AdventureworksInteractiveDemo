@@ -60,6 +60,7 @@ function Chat() {
         sender: userName,
         text: currentMessage
       });
+      console.log(response);
       setCurrentMessage('');
     }
     catch(error) {
