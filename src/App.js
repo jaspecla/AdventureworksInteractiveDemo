@@ -5,6 +5,22 @@ import MyOrder from "./MyOrder";
 import Chat from "./Chat";
 import Home from "./Home";
 import './App.css'
+import { ApplicationInsights } from '@microsoft/applicationinsights-web';
+import { ReactPlugin, withAITracking } from '@microsoft/applicationinsights-react-js';
+import { createBrowserHistory } from "history";
+
+const browserHistory = createBrowserHistory({basename: ''});
+let reactPlugin = new ReactPlugin();
+let appInsights = new ApplicationInsights({
+  config: {
+    instrumentationKey: process.env.REACT_APP_INSTRUMENTATION_KEY,
+    extensions: [reactPlugin],
+    extensionConfig: {
+      [reactPlugin.identifier]: { history: browserHistory }
+    }
+  }
+});
+appInsights.loadAppInsights();
 
 function App() {
   return (
@@ -40,4 +56,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAITracking(reactPlugin, App);
