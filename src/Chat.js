@@ -10,8 +10,10 @@ function Chat() {
 
   const signalRUrl = process.env.REACT_APP_SIGNALR_URL;
 
+  let connection;
+
   if (!isReady) {
-    const connection = new signalR.HubConnectionBuilder()
+    connection = new signalR.HubConnectionBuilder()
       .withUrl(signalRUrl)
       .configureLogging(signalR.LogLevel.Information)
       .build();
